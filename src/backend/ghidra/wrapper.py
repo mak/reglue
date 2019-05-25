@@ -44,7 +44,7 @@ class _ghidra:
         self.cp = None
 
     def init(self, cp=None):
-
+        
         if hasattr(globals(),'currentProgram'):
             self.cp    = currentProgram 
         elif cp:

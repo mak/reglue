@@ -11,9 +11,10 @@ def list_functions(**kwargs):
 def get_function(name_or_ea):
     return Func(name_or_ea)
 
-def open(filename):
+def open(filename,**kwargs):
     ## same as ida?
-    return ghidra_wrapper.init()
+    cp = kwargs.get('cp')
+    return ghidra_wrapper.init(cp)
 
     
 from .objects import *

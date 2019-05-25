@@ -8,8 +8,8 @@ class Op(BaseOp):
         self._op = op
 
     def __str__(self):
-        return str(self._op)
-        
+        return str(self._op).lower()
+
 class Instr(BaseInstr):
     
 

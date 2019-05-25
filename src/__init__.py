@@ -44,9 +44,9 @@ class Binary(object):
         'get_sections' : 'list_sections'  
 
     }
-    def __init__(self,binpath,eng=None):
+    def __init__(self,binpath,eng=None,**kwargs):
         self.eng_name,self.engine = get_engine(eng)
-        self.engine.open(binpath)
+        self.engine.open(binpath,**kwargs)
         
     def __getattr__(self,name):
         name = self.__api_aliases.get(name,name)
