@@ -10,6 +10,7 @@ def list_functions(**kwargs):
 
 get_function = lambda a: Func(a)
 read_bytes  = ghidra_wrapper.read_bytes
+write_bytes = ghidra_wrapper.write_bytes
 
 def open(filename,**kwargs):
     ## same as ida?
