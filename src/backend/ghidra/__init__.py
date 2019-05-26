@@ -8,8 +8,8 @@ def list_functions(**kwargs):
     return map(lambda f: Func(f.getEntryPoint()),ghidra_wrapper.fmgr.getFunctions(True))
 
 
-def get_function(name_or_ea):
-    return Func(name_or_ea)
+get_function = lambda a: Func(a)
+read_bytes  = ghidra_wrapper.read_bytes
 
 def open(filename,**kwargs):
     ## same as ida?

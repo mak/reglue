@@ -41,7 +41,8 @@ class Binary(object):
     __api_aliases = {
         'function' : 'get_function',
         'get_functions':'list_functions',
-        'get_sections' : 'list_sections'  
+        'get_sections' : 'list_sections',
+        'get_bytes': 'read_bytes',
 
     }
     def __init__(self,binpath,eng=None,**kwargs):

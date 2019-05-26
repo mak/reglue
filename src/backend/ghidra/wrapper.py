@@ -1,3 +1,5 @@
+import jarray
+
 from ghidra.program.model.symbol import SourceType
 from ghidra.program.model.listing import CodeUnit
 from ghidra.program.model.address import GenericAddress, AddressSet
@@ -44,7 +46,7 @@ class _ghidra:
         self.cp = None
 
     def init(self, cp=None):
-        
+
         if hasattr(globals(),'currentProgram'):
             self.cp    = currentProgram 
         elif cp:
@@ -59,6 +61,16 @@ class _ghidra:
             self.cm    = self.cp.getCodeManager()
             self.flatapi = FlatProgramAPI(self.cp)
 
+    def read_bytes(self,addr, size):
+        addr = self.to_address(addr) 
+        bytes = jarray.zeros(size, "b")
+        self.mem.getBytes(addr, bytes)
+        return bytearray(bytes)
+
+    def write_bytes(self, addr, bytes):
+        addr = self.to_address(addr)
+        array = jarray.array(bytes, "b")
+        return self.mem.setBytes(addr, array)
 
     def to_address(self,n):
         if issubclass(type(n), GenericAddress):
