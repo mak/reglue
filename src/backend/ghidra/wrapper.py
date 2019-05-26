@@ -1,4 +1,4 @@
-import jarray
+import array
 
 from ghidra.program.model.symbol import SourceType
 from ghidra.program.model.listing import CodeUnit
@@ -63,14 +63,14 @@ class _ghidra:
 
     def read_bytes(self,addr, size):
         addr = self.to_address(addr) 
-        bytes = jarray.zeros(size, "b")
+        bytes = array.array("b", range(size))
         self.mem.getBytes(addr, bytes)
         return bytearray(bytes)
 
     def write_bytes(self, addr, bytes):
         addr = self.to_address(addr)
-        array = jarray.array(bytes, "b")
-        return self.mem.setBytes(addr, array)
+        arrb = array.array("b",bytes)
+        return self.mem.setBytes(addr, arrb)
 
     def to_address(self,n):
         if issubclass(type(n), GenericAddress):
