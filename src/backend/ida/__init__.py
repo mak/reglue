@@ -1,12 +1,14 @@
+import idaapi
 import idautils
 
 def open(f):
     ## we are allready inside inside ida
+    idaapi.autoWait()
     return True
 
 
 def list_functions():
-	return map(Funcf. idautils.Functions())
+	return map(Func,idautils.Functions())
 
 
 get_function = lambda a: Func(a)

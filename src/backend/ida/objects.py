@@ -133,7 +133,7 @@ class Op(object):
     def type(self):
         return self.op.type
         
-class Instr(object):
+class Instr(BaseInstr):
 
     def __init__(self,addr,size):
         self.address  = addr
@@ -144,6 +144,11 @@ class Instr(object):
         self._decoded = False
         self._decode()
         
+    def __str__(self):
+        ops = ( idc.print_operand(self.start_ea,i) for i,op in enumerate(self.i.Operands) if op.shown() ) 
+        return "{} {} @ {:x}".format(self.mnem, ', '.join(filter(None,ops)),self.address)
+
+
     def _decode(self):
         if not self._decoded:
             self._decoded=bool(ida_ua.decode_insn(self.i,self.start_ea))
