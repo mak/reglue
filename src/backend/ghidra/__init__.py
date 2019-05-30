@@ -1,3 +1,4 @@
+import sys
 from .wrapper import _ghidra
 
 
@@ -15,6 +16,7 @@ write_bytes = ghidra_wrapper.write_bytes
 def open(filename,**kwargs):
     ## same as ida?
     cp = kwargs.get('cp')
+    cp = cp or  getattr(sys.modules['__main__'],'currentProgram',None)
     return ghidra_wrapper.init(cp)
 
     
